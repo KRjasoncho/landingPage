@@ -1,0 +1,44 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+}
+
+/* header */
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav .nav-btns {
+  display: flex;
+}
+
+/* main */
+ol {
+    position: relative;
+    top: 0;
+    transition: 0.5s;
+}
+
+ol li {
+    width: 100vw;
+    height: 100vh;
+}
+
+ol li:nth-child(odd) {
+  background-color: plum;
+}
+
+ol li:nth-child(even) {
+  background-color: salmon;
+}
