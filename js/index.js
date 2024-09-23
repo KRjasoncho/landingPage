@@ -1,8 +1,8 @@
-const wrap = document.querySelector(".main-wrap")[0];
+const wrap = document.querySelector(".main-wrap")[0]; // 보여지는 영역
 const mainList = document.querySelectorAll(".main-list");
 
-let page = 0;
-const lastPage = mainList.length - 1;
+let page = 0; // 영역 초기값
+const lastPage = mainList.length - 1; // 마지막 페이지
 
 window.addEventListener(
   "wheel",
@@ -20,5 +20,5 @@ window.addEventListener(
     }
     wrap.style.transform = `translateY(${page * -100}vh)`;
   },
-  { passive: false }
+  { passive: false } // 스크롤 디폴트기능 제거
 );
