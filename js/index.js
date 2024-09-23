@@ -1,4 +1,4 @@
-const wrap = document.querySelector(".main-wrap")[0]; // 보여지는 영역
+const wrap = document.querySelector(".main-wrap"); // 보여지는 영역
 const mainList = document.querySelectorAll(".main-list");
 
 let page = 0; // 영역 초기값
