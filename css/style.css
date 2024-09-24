@@ -19,11 +19,6 @@ body {
   --light-color: #d9d4fc;
 }
 
-.filter-white {
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(82deg)
-    brightness(109%) contrast(101%);
-}
-
 /* header */
 header {
   position: sticky;
@@ -60,6 +55,16 @@ header nav .start-btn {
   line-height: 2.516rem;
   color: #fff;
   padding: 1.2rem 1.9rem 1.3rem 1.9rem;
+}
+
+.start-btn.white {
+  background-color: #fff;
+  color: var(--main-color);
+}
+
+.filter-white {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(82deg)
+    brightness(109%) contrast(101%);
 }
 
 /* main */
@@ -163,17 +168,14 @@ header nav .start-btn {
 
 /* nth-child(1) */
 .main-wrap .main-list:nth-child(1) {
-  background: linear-gradient(
-    100.7deg,
-    #e2dffd -0.28%,
-    #dbd7fc 16.78%,
-    #cbc2fc 41.59%,
-    #b7a9fc 65.62%
-  );
+  background-image: url(/src/list1/list1-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   position: relative;
   z-index: -1;
+  overflow: hidden;
 }
 
 .main-wrap .main-list:nth-child(1) .wrap {
@@ -212,6 +214,7 @@ header nav .start-btn {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  overflow: hidden;
 }
 
 .main-wrap .main-list:nth-child(2) .wrap {
@@ -265,6 +268,7 @@ header nav .start-btn {
   height: 100vh;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 .main-wrap .main-list:nth-child(3) div.full {
   background-color: var(--main-color);
@@ -330,6 +334,7 @@ header nav .start-btn {
   width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .main-wrap .main-list:nth-child(4) .center-line {
@@ -425,7 +430,10 @@ header nav .start-btn {
 
 /* nth-child(5) */
 .main-wrap .main-list:nth-child(5) {
-  background-color: #462b7a;
+  background-image: url(/src/list5/list5-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
