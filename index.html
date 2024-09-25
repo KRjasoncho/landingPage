@@ -14,16 +14,26 @@
   </head>
   <body>
     <header>
-      <nav>
+      <nav class="nav">
         <h1>
           <a href="#"><img src="./src/header/로고.svg" alt="엔로직" /></a>
         </h1>
         <ul class="nav-btns">
-          <li><img src="./src/header/cafe.svg" alt="cafe" /></li>
-          <li><img src="./src/header/인스타.svg" alt="인스타그램" /></li>
-          <li><img src="./src/header/블로그.svg" alt="블로그" /></li>
-          <li><img src="./src/header/유튜브.svg" alt="유튜브" /></li>
-          <li><button class="start-btn">무료로 시작하기</button></li>
+          <li class="nav-item">
+            <img src="./src/header/cafe.svg" alt="cafe" />
+          </li>
+          <li class="nav-item">
+            <img src="./src/header/인스타.svg" alt="인스타그램" />
+          </li>
+          <li class="nav-item">
+            <img src="./src/header/블로그.svg" alt="블로그" />
+          </li>
+          <li class="nav-item">
+            <img src="./src/header/유튜브.svg" alt="유튜브" />
+          </li>
+          <li class="nav-item">
+            <button class="start-btn">무료로 시작하기</button>
+          </li>
         </ul>
       </nav>
     </header>
@@ -36,7 +46,7 @@
         <button></button>
       </div>
       <ol class="main-wrap">
-        <li class="main-list">
+        <li class="main-list" id="main1">
           <div class="wrap">
             <p class="title">
               모두가 <br />
@@ -51,7 +61,7 @@
             </div>
           </div>
         </li>
-        <li class="main-list">
+        <li class="main-list" id="main2">
           <div class="wrap">
             <p class="title">
               <span class="purple">누구나 쉽게</span><br />
@@ -125,7 +135,14 @@
         <li class="main-list">성공의 그날까지 함께</li>
       </ol>
     </main>
-    <footer></footer>
+    <footer class="none">
+      <address>
+        <div>주식회사 뉴프렌즈</div>
+        <div>경기도 화성시 동탄영천로 105, 1505호 (영천동, 이든앤스페이스)</div>
+        <div>989-81-02971</div>
+        <a href="mailto:info@newfriends.kr">info@newfriends</a>
+      </address>
+    </footer>
     <script src="./js/index.js"></script>
   </body>
 </html>
