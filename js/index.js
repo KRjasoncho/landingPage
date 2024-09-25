@@ -43,6 +43,14 @@ const updateUI = () => {
   wrap.style.transform = `translateY(${page * -100}vh)`;
 
   console.log(`현재 페이지: ${page}`);
+
+  // page2 animation
+  if (page === 2) {
+    navBtn.classList.add("white-btn");
+    navTitle.classList.add("filter-white");
+    navImg.forEach((img) => img.classList.add("filter-white"));
+    breadCrumbs[2].classList.add("focusTap2");
+  }
 };
 
 const throttleScroll = (e) => {
