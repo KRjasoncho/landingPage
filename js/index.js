@@ -45,11 +45,43 @@ const updateUI = () => {
   console.log(`현재 페이지: ${page}`);
 
   // page2 animation
+  let animationInprogress = false;
+  const aniContent = document.querySelector(".main-list .ani-content");
+  const resetAnimation = () => {
+    aniContent.classList.add("ani-content");
+    aniContent.classList.add("full");
+    aniContent.classList.remove("sub-title");
+    aniContent.classList.remove("shrink");
+    aniContent.style.opacity = 1;
+  };
+
   if (page === 2) {
-    navBtn.classList.add("white-btn");
-    navTitle.classList.add("filter-white");
-    navImg.forEach((img) => img.classList.add("filter-white"));
-    breadCrumbs[2].classList.add("focusTap2");
+    if (!animationInprogress) {
+      animationInprogress = true;
+      navBtn.classList.add("white-btn");
+      navTitle.classList.add("filter-white");
+      navImg.forEach((img) => img.classList.add("filter-white"));
+      breadCrumbs[2].classList.add("focusTap2");
+
+      setTimeout(() => {
+        aniContent.classList.add("shrink");
+        setTimeout(() => {
+          aniContent.classList.remove("full");
+          aniContent.classList.add("sub-title");
+          aniContent.classList.remove("full");
+          aniContent.classList.remove("shrink");
+
+          //애니메이션 끝
+          navImg.forEach((img) => img.classList.remove("filter-white"));
+          breadCrumbs[2].classList.remove("focusTap2");
+          navBtn.classList.remove("white-btn");
+          navTitle.classList.remove("filter-white");
+        }, 500);
+      }, 1000);
+      animationInprogress = false;
+    }
+  } else {
+    resetAnimation();
   }
 };
 

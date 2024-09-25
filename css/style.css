@@ -336,6 +336,23 @@ footer address div:nth-child(4)::before {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 1s ease;
+  opacity: 1;
+}
+
+.shrink {
+  animation: shrink 0.5s forwards;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
 .main-wrap .main-list:nth-child(3) .sub-title {
