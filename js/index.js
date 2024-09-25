@@ -5,6 +5,7 @@ const navTitle = document.querySelector("h1");
 const navImg = document.querySelectorAll(".nav-item img");
 const navBtn = document.querySelector(".purple-btn");
 const footer = document.querySelector("footer");
+const breadCrumbs = document.querySelectorAll(".bread-crumbs button");
 
 let page = 0; // 영역 초기값
 const lastPage = mainList.length - 1; // 마지막 페이지
@@ -51,6 +52,40 @@ const throttleScroll = (e) => {
     navImg.forEach((img) => {
       img.classList.remove("filter-white");
     });
+  }
+
+  // page별 bread-crumbs css적용
+  switch (page) {
+    case 0:
+      breadCrumbs.forEach((breadcrumb) =>
+        breadcrumb.classList.remove("focusTap")
+      );
+      breadCrumbs[0].classList.add("focusTap");
+      break;
+    case 1:
+      breadCrumbs.forEach((breadcrumb) =>
+        breadcrumb.classList.remove("focusTap")
+      );
+      breadCrumbs[1].classList.add("focusTap");
+      break;
+    case 2:
+      breadCrumbs.forEach((breadcrumb) =>
+        breadcrumb.classList.remove("focusTap")
+      );
+      breadCrumbs[2].classList.add("focusTap");
+      break;
+    case 3:
+      breadCrumbs.forEach((breadcrumb) =>
+        breadcrumb.classList.remove("focusTap")
+      );
+      breadCrumbs[3].classList.add("focusTap");
+      break;
+    case 4:
+      breadCrumbs.forEach((breadcrumb) =>
+        breadcrumb.classList.remove("focusTap")
+      );
+      breadCrumbs[4].classList.add("focusTap");
+      break;
   }
 
   console.log(page);
