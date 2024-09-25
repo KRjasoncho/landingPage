@@ -3,7 +3,7 @@ const mainList = document.querySelectorAll(".main-list");
 const nav = document.querySelector("nav");
 const navTitle = document.querySelector("h1");
 const navImg = document.querySelectorAll(".nav-item img");
-const navBtn = document.querySelector(".start-btn");
+const navBtn = document.querySelector(".purple-btn");
 const footer = document.querySelector("footer");
 
 let page = 0; // 영역 초기값
@@ -38,8 +38,8 @@ const throttleScroll = (e) => {
     navBtn.style.display = "block";
   }
 
-  // page 2/4 white 적용
-  if (page === 2 || page === 4) {
+  // page 4 white 적용
+  if (page === 4) {
     navBtn.classList.add("white-btn");
     navTitle.classList.add("filter-white");
     navImg.forEach((img) => {

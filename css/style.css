@@ -47,7 +47,7 @@ header .nav .nav-btns:nth-child(-n + 4) {
   gap: 2rem;
 }
 
-header .nav .start-btn {
+.purple-btn {
   border-radius: 3.7rem;
   background-color: var(--main-color);
   font-size: 1.7rem;
@@ -62,7 +62,7 @@ header .nav .start-btn {
     brightness(109%) contrast(101%);
 }
 
-header .nav .start-btn.white-btn {
+header .nav .purple-btn.white-btn {
   background-color: #fff;
   color: var(--main-color);
 }
@@ -90,13 +90,24 @@ footer.none {
   display: none;
 }
 
-footer address,
-address a {
+footer address {
   width: 48.6vw;
   padding-top: 2rem;
   font-size: 1.6rem;
   line-height: 2.3rem;
   color: #cbcbcb;
+}
+
+footer address a {
+  color: #cbcbcb;
+}
+
+footer address div:nth-child(3)::before {
+  content: "사업자번호: ";
+}
+
+footer address div:nth-child(4)::before {
+  content: "Email: ";
 }
 
 /* main */
@@ -468,4 +479,16 @@ address a {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+}
+
+.main-wrap .main-list:nth-child(5) .wrap {
+  padding: 19.3rem 12.7vw 0 25.8vw;
+}
+
+.main-wrap .main-list:nth-child(5) .title {
+  color: #fff;
+}
+
+.main-wrap .main-list:nth-child(5) .purple-btn {
+  margin: 2.6rem 3rem 0 0;
 }
