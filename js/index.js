@@ -9,25 +9,9 @@ const breadCrumbs = document.querySelectorAll(".bread-crumbs button");
 
 let page = 0; // 영역 초기값
 const lastPage = mainList.length - 1; // 마지막 페이지
-let isScrolling = false; //스크롤 잠금 상태
+let isScrolling = false; // 스크롤 잠금 상태
 
-const throttleScroll = (e) => {
-  if (isScrolling) return; // 이미 스크롤 중이면 무시
-
-  isScrolling = true; //스크롤 중 상태로 변경
-  if (e.deltaY > 0) {
-    page++;
-  } else if (e.deltaY < 0) {
-    page--;
-  }
-  if (page < 0) {
-    page = 0;
-  } else if (page > lastPage) {
-    page = lastPage;
-  }
-
-  wrap.style.transform = `translateY(${page * -100}vh)`;
-
+const updateUI = () => {
   // last page nav/footer 적용
   if (page === lastPage) {
     nav.classList.add("lastNav");
@@ -43,63 +27,66 @@ const throttleScroll = (e) => {
   if (page === 4) {
     navBtn.classList.add("white-btn");
     navTitle.classList.add("filter-white");
-    navImg.forEach((img) => {
-      img.classList.add("filter-white");
-    });
+    navImg.forEach((img) => img.classList.add("filter-white"));
   } else {
     navBtn.classList.remove("white-btn");
     navTitle.classList.remove("filter-white");
-    navImg.forEach((img) => {
-      img.classList.remove("filter-white");
-    });
+    navImg.forEach((img) => img.classList.remove("filter-white"));
   }
 
-  // page별 bread-crumbs css적용
-  switch (page) {
-    case 0:
-      breadCrumbs.forEach((breadcrumb) =>
-        breadcrumb.classList.remove("focusTap")
-      );
-      breadCrumbs[0].classList.add("focusTap");
-      break;
-    case 1:
-      breadCrumbs.forEach((breadcrumb) =>
-        breadcrumb.classList.remove("focusTap")
-      );
-      breadCrumbs[1].classList.add("focusTap");
-      break;
-    case 2:
-      breadCrumbs.forEach((breadcrumb) =>
-        breadcrumb.classList.remove("focusTap")
-      );
-      breadCrumbs[2].classList.add("focusTap");
-      break;
-    case 3:
-      breadCrumbs.forEach((breadcrumb) =>
-        breadcrumb.classList.remove("focusTap")
-      );
-      breadCrumbs[3].classList.add("focusTap");
-      break;
-    case 4:
-      breadCrumbs.forEach((breadcrumb) =>
-        breadcrumb.classList.remove("focusTap")
-      );
-      breadCrumbs[4].classList.add("focusTap");
-      break;
-  }
+  // page별 bread-crumbs css 적용
+  breadCrumbs.forEach((breadcrumb, index) => {
+    breadcrumb.classList.toggle("focusTap", index === page);
+  });
 
-  console.log(page);
+  // 페이지 이동
+  wrap.style.transform = `translateY(${page * -100}vh)`;
 
-  setTimeout(() => {
-    isScrolling = false;
-  }, 1000); // 1초동안 스크롤링 무시
+  console.log(`현재 페이지: ${page}`);
 };
 
+const throttleScroll = (e) => {
+  if (isScrolling) return; // 이미 스크롤 중이면 무시
+
+  isScrolling = true; // 스크롤 중 상태로 변경
+
+  // 스크롤 방향에 따라 페이지 인덱스 증가/감소
+  if (e.deltaY > 0) {
+    page++;
+  } else if (e.deltaY < 0) {
+    page--;
+  }
+
+  // 페이지 인덱스 경계 처리
+  page = Math.max(0, Math.min(page, lastPage));
+
+  updateUI(); // UI 업데이트
+
+  // 1초 후 스크롤 가능
+  setTimeout(() => {
+    isScrolling = false;
+  }, 1000); // 1초 동안 스크롤링 무시
+};
+
+// Breadcrumb 클릭 이벤트 추가
+breadCrumbs.forEach((breadcrumb, index) => {
+  breadcrumb.addEventListener("click", (e) => {
+    e.stopPropagation(); // 이벤트 전파 방지
+    e.preventDefault(); // 기본 클릭 동작 방지
+
+    // 클릭한 버튼의 인덱스에 해당하는 페이지로 이동
+    page = index;
+    isScrolling = false; // 클릭 시 스크롤 잠금 해제
+    updateUI(); // UI 업데이트
+  });
+});
+
+// 스크롤 이벤트
 window.addEventListener(
   "wheel",
   (e) => {
     e.preventDefault();
     throttleScroll(e);
   },
-  { passive: false } // 스크롤 디폴트기능 제거
+  { passive: false } // 스크롤 디폴트 기능 제거
 );
