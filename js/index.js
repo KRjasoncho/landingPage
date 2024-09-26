@@ -72,12 +72,16 @@ const updateUI = () => {
           aniContent.classList.remove("shrink");
 
           //애니메이션 끝
-          navImg.forEach((img) => img.classList.remove("filter-white"));
-          breadCrumbs[2].classList.remove("focusTap2");
-          navBtn.classList.remove("white-btn");
-          navTitle.classList.remove("filter-white");
-        }, 500);
+        }, 1000);
       }, 1000);
+      setTimeout(() => {
+        breadCrumbs[2].classList.remove("focusTap2");
+      }, 1200);
+      setTimeout(() => {
+        navImg.forEach((img) => img.classList.remove("filter-white"));
+        navBtn.classList.remove("white-btn");
+        navTitle.classList.remove("filter-white");
+      }, 1500);
       animationInprogress = false;
     }
   } else {
