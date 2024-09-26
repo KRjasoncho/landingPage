@@ -9,6 +9,18 @@ body {
   font-family: "Noto Sans KR", sans-serif;
 }
 
+.sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 :root {
   --main-color: #7b53ea;
   --text-color: #2c2336;
@@ -31,6 +43,15 @@ header {
   padding-top: 5.7rem;
 }
 
+header h1::before {
+  content: "";
+  display: block;
+  width: 204px;
+  height: 39px;
+  background-image: url(/src/header/headerIMG.png);
+  background-position: -10px -10px;
+}
+
 header .nav {
   display: flex;
   justify-content: space-between;
@@ -45,6 +66,36 @@ header .nav .nav-btns {
 
 header .nav .nav-btns:nth-child(-n + 4) {
   gap: 2rem;
+}
+
+header .nav .nav-btns .nav-item [class^="btn"]::before {
+  content: "";
+  display: block;
+  background-image: url(/src/header/headerIMG.png);
+}
+
+header .nav .nav-btns .nav-item .btn-cafe::before {
+  width: 31px;
+  height: 31px;
+  background-position: -10px -120px;
+}
+
+header .nav .nav-btns .nav-item .btn-insta::before {
+  width: 32px;
+  height: 31px;
+  background-position: -67px -69px;
+}
+
+header .nav .nav-btns .nav-item .btn-blog::before {
+  width: 37px;
+  height: 31px;
+  background-position: -10px -69px;
+}
+
+header .nav .nav-btns .nav-item .btn-youtube::before {
+  width: 37px;
+  height: 26px;
+  background-position: -119px -69px;
 }
 
 .purple-btn {
@@ -242,21 +293,37 @@ footer address div:nth-child(4)::before {
   width: 100%;
 }
 
-.main-wrap .main-list:nth-child(1) .img-wrap img:first-child {
+.main-wrap .main-list:nth-child(1) .img-wrap [class^="img"]::before {
+  content: "";
+  display: block;
+  background-image: url(/src/list1/list1-img.png);
+  width: 260px;
+  height: 245px;
+}
+
+.main-wrap .main-list:nth-child(1) .img-wrap .img1 {
   position: absolute;
   top: 38.2vh;
   left: 56vw;
   width: 13.5vw;
 }
 
-.main-wrap .main-list:nth-child(1) .img-wrap img:nth-child(2) {
+.main-wrap .main-list:nth-child(1) .img-wrap .img1::before {
+background-position: -290px -10px;
+}
+
+.main-wrap .main-list:nth-child(1) .img-wrap .img2 {
   position: absolute;
   top: 65.1vh;
   left: 50vw;
   width: 13.5vw;
 }
 
-.main-wrap .main-list:nth-child(1) .img-wrap img:nth-child(3) {
+.main-wrap .main-list:nth-child(1) .img-wrap .img2::before {
+  background-position: -10px -275px;
+}
+
+.main-wrap .main-list:nth-child(1) .img-wrap .img3 {
   position: absolute;
   top: 67.6vh;
   left: 65.5vw;
