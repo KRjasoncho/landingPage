@@ -44,7 +44,7 @@ const updateUI = () => {
 
   console.log(`현재 페이지: ${page}`);
 
-  // page2 animation
+  // page[2] animation
   let animationInprogress = false;
   const aniContent = document.querySelector(".main-list .ani-content");
   const solutionList = document.querySelectorAll(
@@ -99,6 +99,50 @@ const updateUI = () => {
     resetAnimation(); // 다른페이지에서 애니메이션 초기화
   }
 };
+
+// page[4] hovering animation
+
+// left
+const provideLeft = document.querySelectorAll(
+  ".center-line .provide-list-left"
+);
+
+provideLeft.forEach((list) => {
+  const provideLists = list.querySelectorAll(".provide-list"); // 각 provide-list 요소 선택
+
+  provideLists.forEach((item) => {
+    const provideLeftTitle = item.querySelector(".provide-title"); // 현재 항목의 타이틀
+    const provideLeftContent = item.querySelector(".provide-content"); // 현재 항목의 내용
+
+    item.addEventListener("mouseover", () => {
+      item.classList.add("hover-box-left"); // 현재 항목에 hover 스타일 적용
+
+      if (provideLeftTitle) {
+        provideLeftTitle.classList.add("hovering-title");
+        provideLeftTitle.classList.add("hover-box-underline"); // 밑줄 추가
+      }
+
+      if (provideLeftContent) {
+        provideLeftContent.classList.add("hovering-list");
+        provideLeftContent.style.display = "block"; // 보이게 설정
+      }
+    });
+
+    item.addEventListener("mouseleave", () => {
+      item.classList.remove("hover-box-left"); // 현재 항목의 hover 스타일 제거
+
+      if (provideLeftTitle) {
+        provideLeftTitle.classList.remove("hovering-title");
+        provideLeftTitle.classList.remove("hover-box-underline"); // 밑줄 제거
+      }
+
+      if (provideLeftContent) {
+        provideLeftContent.classList.remove("hovering-list");
+        provideLeftContent.style.display = "none"; // 숨기기
+      }
+    });
+  });
+});
 
 const throttleScroll = (e) => {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
