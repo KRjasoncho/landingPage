@@ -47,11 +47,16 @@ const updateUI = () => {
   // page2 animation
   let animationInprogress = false;
   const aniContent = document.querySelector(".main-list .ani-content");
+  const solutionList = document.querySelectorAll(
+    ".solution-wrap .solution-box"
+  );
   const resetAnimation = () => {
     aniContent.classList.add("ani-content");
     aniContent.classList.add("full");
     aniContent.classList.remove("sub-title");
     aniContent.classList.remove("shrink");
+    solutionList.forEach((el) => el.classList.remove("apper"));
+
     aniContent.style.opacity = 1;
   };
 
@@ -70,22 +75,28 @@ const updateUI = () => {
           aniContent.classList.add("sub-title");
           aniContent.classList.remove("full");
           aniContent.classList.remove("shrink");
+          setTimeout(() => {
+            breadCrumbs[2].classList.remove("focusTap2");
 
-          //애니메이션 끝
+            // solutionList 애니메이션
+            solutionList.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add("apper");
+              }, index * 2000);
+            });
+          }, 1000);
         }, 1000);
-      }, 1000);
-      setTimeout(() => {
-        breadCrumbs[2].classList.remove("focusTap2");
       }, 1200);
       setTimeout(() => {
         navImg.forEach((img) => img.classList.remove("filter-white"));
         navBtn.classList.remove("white-btn");
         navTitle.classList.remove("filter-white");
       }, 1500);
+
       animationInprogress = false;
     }
   } else {
-    resetAnimation();
+    resetAnimation(); // 다른페이지에서 애니메이션 초기화
   }
 };
 
