@@ -108,37 +108,37 @@ const provideLeft = document.querySelectorAll(
 );
 
 provideLeft.forEach((list) => {
-  const provideLists = list.querySelectorAll(".provide-list"); // 각 provide-list 요소 선택
+  const provideLists = list.querySelectorAll(".provide-list");
 
   provideLists.forEach((item) => {
-    const provideLeftTitle = item.querySelector(".provide-title"); // 현재 항목의 타이틀
-    const provideLeftContent = item.querySelector(".provide-content"); // 현재 항목의 내용
+    const provideLeftTitle = item.querySelector(".provide-title");
+    const provideLeftContent = item.querySelector(".provide-content");
 
     item.addEventListener("mouseover", () => {
-      item.classList.add("hover-box-left"); // 현재 항목에 hover 스타일 적용
+      item.classList.add("hover-box-left");
 
       if (provideLeftTitle) {
         provideLeftTitle.classList.add("hovering-title");
-        provideLeftTitle.classList.add("hover-box-underline"); // 밑줄 추가
+        provideLeftTitle.classList.add("hover-box-underline");
       }
 
       if (provideLeftContent) {
         provideLeftContent.classList.add("hovering-list");
-        provideLeftContent.style.display = "block"; // 보이게 설정
+        provideLeftContent.style.display = "block";
       }
     });
 
     item.addEventListener("mouseleave", () => {
-      item.classList.remove("hover-box-left"); // 현재 항목의 hover 스타일 제거
+      item.classList.remove("hover-box-left");
 
       if (provideLeftTitle) {
         provideLeftTitle.classList.remove("hovering-title");
-        provideLeftTitle.classList.remove("hover-box-underline"); // 밑줄 제거
+        provideLeftTitle.classList.remove("hover-box-underline");
       }
 
       if (provideLeftContent) {
         provideLeftContent.classList.remove("hovering-list");
-        provideLeftContent.style.display = "none"; // 숨기기
+        provideLeftContent.style.display = "none";
       }
     });
   });
@@ -170,8 +170,8 @@ const throttleScroll = (e) => {
 // Breadcrumb 클릭 이벤트 추가
 breadCrumbs.forEach((breadcrumb, index) => {
   breadcrumb.addEventListener("click", (e) => {
-    e.stopPropagation(); // 이벤트 전파 방지
-    e.preventDefault(); // 기본 클릭 동작 방지
+    e.stopPropagation();
+    e.preventDefault();
 
     // 클릭한 버튼의 인덱스에 해당하는 페이지로 이동
     page = index;
