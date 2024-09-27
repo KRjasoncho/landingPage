@@ -73,8 +73,8 @@ const updateUI = () => {
         setTimeout(() => {
           aniContent.classList.remove("full");
           aniContent.classList.add("sub-title");
-          aniContent.classList.remove("full");
           aniContent.classList.remove("shrink");
+
           setTimeout(() => {
             breadCrumbs[2].classList.remove("focusTap2");
 
@@ -82,7 +82,7 @@ const updateUI = () => {
             solutionList.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add("apper");
-              }, index * 2000);
+              }, index * 1500);
             });
           }, 1000);
         }, 1000);
@@ -96,7 +96,9 @@ const updateUI = () => {
       animationInprogress = false;
     }
   } else {
-    resetAnimation(); // 다른페이지에서 애니메이션 초기화
+    setTimeout(() => {
+      resetAnimation(); // 다른페이지에서 애니메이션 초기화
+    }, 1500);
   }
 };
 
@@ -133,18 +135,19 @@ function handleHover(item, hoverClass, titleClass, contentClass) {
 }
 
 // 좌측 리스트 처리
-document.querySelectorAll(".center-line .provide-list-left").forEach((list) => {
+document.querySelectorAll(".provide-list-left").forEach((list) => {
   list.querySelectorAll(".provide-list").forEach((item) => {
     handleHover(item, "hover-box-left", "hovering-title", "hovering-list");
   });
 });
 
 // 우측 리스트 처리
-document.querySelectorAll(".center-line .provide-list-right").forEach((list) => {
-  list.querySelectorAll(".provide-list").forEach((item) => {
-    handleHover(item, "hover-box-right", "hovering-title", "hovering-list");
+document.querySelectorAll(".provide-list-right")
+  .forEach((list) => {
+    list.querySelectorAll(".provide-list").forEach((item) => {
+      handleHover(item, "hover-box-right", "hovering-title", "hovering-list");
+    });
   });
-});
 
 // 스크롤이벤트
 const throttleScroll = (e) => {

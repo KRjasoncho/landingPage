@@ -418,7 +418,7 @@ footer address div:nth-child(4)::before {
   }
 
   to {
-    transform: scale(0.2) translateY(-70rem);
+    transform: scale(0.3) translateY(-55rem);
     opacity: 1;
     transform-origin: center;
   }
@@ -494,28 +494,49 @@ footer address div:nth-child(4)::before {
   height: 100vh;
   position: relative;
   overflow: hidden;
-  position: relative;
-}
-
-.main-wrap .main-list:nth-child(4) .center-line {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 28.2vh;
 }
 
-.main-wrap .main-list:nth-child(4) .center-line::before {
-  content: "";
-  border-right: 3px solid var(--light-color);
-  height: 52.31vh;
+.main-wrap .main-list:nth-child(4) .center-line {
   position: absolute;
-  top: 32.7%;
+  top: 32vh;
   left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-color);
+  width: 3px;
+  height: 52.3vh;
 }
 
-.main-list:nth-child(4) .provide-list-left .provide-list {
+.main-wrap .main-list:nth-child(4) .provide-list {
+  background-color: rgba(255, 255, 255, 0.26);
+  width: 19.7rem;
+  color: var(--text-color);
+  font-size: 2.4rem;
+  line-height: 3.55rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2.4rem 0;
+  border-radius: 2.5rem;
+}
+
+.main-list:nth-child(4) .provide-list-left,
+.main-list:nth-child(4) .provide-list-right {
   position: absolute;
-  left: 37.7vw;
+  top: 0;
+}
+
+.main-list:nth-child(4) .provide-list-left {
+  left: calc(50% - 19.3rem - 3.8rem);
+  transform: translateX(-50%);
 }
 
 .main-list:nth-child(4) .provide-list-left .provide-list:nth-child(1) {
@@ -525,16 +546,18 @@ footer address div:nth-child(4)::before {
 
 .main-list:nth-child(4) .provide-list-left .provide-list:nth-child(2) {
   position: absolute;
-  top: 51.76vh;
+  top: 49.12vh;
 }
 
 .main-list:nth-child(4) .provide-list-left .provide-list:nth-child(3) {
   position: absolute;
-  top: 70vh;
+  top: 70.04vh;
 }
-.main-list:nth-child(4) .provide-list-right .provide-list {
+
+.main-list:nth-child(4) .provide-list-right {
   position: absolute;
-  left: 51.88vw;
+  left: calc(50% - 19.9rem);
+  transform: translateX(-50%);
 }
 
 .main-list:nth-child(4) .provide-list-right .provide-list:nth-child(1) {
@@ -552,6 +575,13 @@ footer address div:nth-child(4)::before {
   top: 80.51vh;
 }
 
+.main-wrap
+  .main-list:nth-child(4)
+  .provide-list-left
+  .provide-list.hover-box-left::before {
+  right: -8%;
+}
+
 .main-wrap .main-list:nth-child(4) .provide-list-left .provide-list::before {
   content: "";
   border-top: solid 2px var(--dark-color);
@@ -559,13 +589,6 @@ footer address div:nth-child(4)::before {
   position: absolute;
   top: 50%;
   right: -17%;
-}
-
-.main-wrap
-  .main-list:nth-child(4)
-  .provide-list-left
-  .provide-list.hover-box-left::before {
-  right: -8%;
 }
 
 .main-wrap .main-list:nth-child(4) .provide-list-left .provide-list::after {
@@ -577,20 +600,43 @@ footer address div:nth-child(4)::before {
   position: absolute;
   background-color: var(--dark-color);
   top: 50%;
-  right: -19%;
-  transform: translate(50%, -50%);
+  right: -32%;
+  transform: translate(-50%, -50%);
 }
 
 .main-wrap
   .main-list:nth-child(4)
   .provide-list-left
   .provide-list.hover-box-left::after {
-  right: -9%;
+  right: -14%;
+  top: 49.5%;
+}
+
+.main-wrap
+  .main-list:nth-child(4)
+  .provide-list-left
+  .provide-list.hover-box-left::before {
+  top: 49.5%;
 }
 
 .main-wrap .main-list:nth-child(4) .provide-list-right {
-  margin-top: 9.5rem;
-  margin-left: 3.3rem;
+  margin-left: 23.3rem;
+}
+
+.main-wrap
+  .main-list:nth-child(4)
+  .provide-list-right
+  .provide-list.hover-box-right::before {
+  left: -8%;
+  top: 47.5%;
+}
+
+.main-wrap
+  .main-list:nth-child(4)
+  .provide-list-right
+  .provide-list.hover-box-right::after {
+  left: -8.2%;
+  top: 47%;
 }
 
 .main-wrap .main-list:nth-child(4) .provide-list-right .provide-list::before {
@@ -600,13 +646,6 @@ footer address div:nth-child(4)::before {
   position: absolute;
   top: 50%;
   left: -17%;
-}
-
-.main-wrap
-  .main-list:nth-child(4)
-  .provide-list-right
-  .provide-list.hover-box-right::before {
-  left: -8%;
 }
 
 .main-wrap .main-list:nth-child(4) .provide-list-right .provide-list::after {
@@ -622,66 +661,44 @@ footer address div:nth-child(4)::before {
   transform: translate(-50%, -50%);
 }
 
-.main-wrap
-  .main-list:nth-child(4)
-  .provide-list-right
-  .provide-list.hover-box-right::after {
-  left: -9%;
-}
-
-.main-wrap .main-list:nth-child(4) .provide-list {
-  background-color: rgba(255, 255, 255, 0.26);
-  width: 19.7rem;
-  color: var(--text-color);
-  font-size: 2.4rem;
-  line-height: 3.55rem;
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2.4rem 0;
-  border-radius: 2.5rem;
-}
-
 .main-wrap .main-list:nth-child(4) .provide-list .provide-content {
   display: none;
 }
 
-.main-list .center-line .provide-list-left .hover-box-left {
+.main-list .provide-list-left .provide-list.hover-box-left {
   background-color: #fff;
   align-items: end;
-  position: absolute;
-  left: 25.47vw;
+  position: relative;
+  left: calc(50% - 3.8rem);
+  transform: translate(-45%, -30%);
   justify-content: end;
   text-align: right;
   width: 43.2rem;
   box-sizing: border-box;
   padding-right: 4.4rem;
-  transform: translateY(-32%);
 }
 
-.main-list .center-line .provide-list-right .hover-box-right {
+.main-list .provide-list-right .provide-list.hover-box-right {
   background-color: #fff;
   align-items: start;
   position: absolute;
-  left: 51.88vw;
+  left: calc(50% + 19.3rem + 3.8rem);
+  transform: translate(-53%, -28%);
   justify-content: start;
   text-align: left;
   width: 43.2rem;
   box-sizing: border-box;
   padding-left: 4.4rem;
-  transform: translateY(-32%);
 }
 
-.main-list .center-line .hovering-title {
+.main-list .hovering-title {
   color: var(--main-color);
   font-size: 3rem;
   line-height: 4.4rem;
   font-weight: 700;
 }
 
-.main-list .center-line .hover-box-underline::after {
+.main-list .hover-box-underline::after {
   content: "";
   display: block;
   border-bottom: 1px solid #d7d2f9;
@@ -689,12 +706,11 @@ footer address div:nth-child(4)::before {
   margin-top: 0.5rem;
 }
 
-.main-list .center-line .hovering-list {
+.main-list .hovering-list {
   font-size: 2.4rem;
   line-height: 3.55rem;
   font-weight: 500;
   margin-top: 1.1rem;
-  display: none;
 }
 
 /* nth-child(5) */
