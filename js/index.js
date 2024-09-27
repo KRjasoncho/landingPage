@@ -51,10 +51,10 @@ const updateUI = () => {
     ".solution-wrap .solution-box"
   );
   const resetAnimation = () => {
-    aniContent.classList.add("ani-content");
     aniContent.classList.add("full");
     aniContent.classList.remove("sub-title");
     aniContent.classList.remove("shrink");
+    aniContent.classList.add("ani-content");
     solutionList.forEach((el) => el.classList.remove("apper"));
 
     aniContent.style.opacity = 1;
@@ -76,8 +76,6 @@ const updateUI = () => {
           aniContent.classList.remove("shrink");
 
           setTimeout(() => {
-            breadCrumbs[2].classList.remove("focusTap2");
-
             // solutionList 애니메이션
             solutionList.forEach((el, index) => {
               setTimeout(() => {
@@ -86,19 +84,21 @@ const updateUI = () => {
             });
           }, 1000);
         }, 1000);
-      }, 1200);
+      }, 1500);
+
       setTimeout(() => {
         navImg.forEach((img) => img.classList.remove("filter-white"));
         navBtn.classList.remove("white-btn");
         navTitle.classList.remove("filter-white");
+        breadCrumbs[2].classList.remove("focusTap2");
       }, 1500);
 
       animationInprogress = false;
     }
   } else {
-    setTimeout(() => {
-      resetAnimation(); // 다른페이지에서 애니메이션 초기화
-    }, 1500);
+    animationInprogress = false;
+    resetAnimation(); // 다른페이지에서 애니메이션 초기화
+    breadCrumbs[2].classList.remove("focusTap2");
   }
 };
 
@@ -142,12 +142,11 @@ document.querySelectorAll(".provide-list-left").forEach((list) => {
 });
 
 // 우측 리스트 처리
-document.querySelectorAll(".provide-list-right")
-  .forEach((list) => {
-    list.querySelectorAll(".provide-list").forEach((item) => {
-      handleHover(item, "hover-box-right", "hovering-title", "hovering-list");
-    });
+document.querySelectorAll(".provide-list-right").forEach((list) => {
+  list.querySelectorAll(".provide-list").forEach((item) => {
+    handleHover(item, "hover-box-right", "hovering-title", "hovering-list");
   });
+});
 
 // 스크롤이벤트
 const throttleScroll = (e) => {

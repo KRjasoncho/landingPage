@@ -138,6 +138,7 @@ footer {
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-left: 5rem;
   z-index: 1000;
 }
 
@@ -199,7 +200,7 @@ footer address div:nth-child(4)::before {
 }
 
 .bread-crumbs button {
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 2rem;
   margin-bottom: 1.5rem;
   margin-left: 1rem;
@@ -211,13 +212,13 @@ footer address div:nth-child(4)::before {
 }
 
 .bread-crumbs button.focusTap {
-  border: solid 1rem var(--main-color);
-  margin-left: 0;
+  border: solid 0.5rem var(--main-color);
+  margin-left: 0.5rem;
 }
 
 .bread-crumbs button.focusTap2 {
-  border: solid 1rem #d6c8ff;
-  margin-left: 0;
+  border: solid 0.5rem #d6c8ff;
+  margin-left: 0.5rem;
 }
 
 /* solutionbox */
@@ -409,23 +410,36 @@ footer address div:nth-child(4)::before {
   box-shadow: 0px 6px 10px 4px rgba(0, 0, 0, 0.26);
   border-radius: 2.5rem;
   opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .shrink {
-  animation: shrink 1s ease-out;
+  animation: shrink 1s ease-out forwards;
 }
 
 @keyframes shrink {
   from {
-    transform: scale(1) translateY(0);
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    font-size: 6.4rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 1;
-    transform-origin: center;
   }
 
   to {
-    transform: scale(0.3) translateY(-55rem);
+    width: 62.4rem;
+    max-height: 10rem;
+    font-size: 3rem;
+    top: 46.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 1;
-    transform-origin: center;
   }
 }
 
@@ -502,6 +516,11 @@ footer address div:nth-child(4)::before {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main-wrap .main-list:nth-child(4) .line-wrap {
+  position: relative;
+  top: -53%;
 }
 
 .main-wrap .main-list:nth-child(4) .center-line {
