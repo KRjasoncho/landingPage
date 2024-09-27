@@ -418,7 +418,7 @@ footer address div:nth-child(4)::before {
   }
 
   to {
-    transform: scale(0.3) translateY(-50rem);
+    transform: scale(0.2) translateY(-70rem);
     opacity: 1;
     transform-origin: center;
   }
@@ -451,12 +451,12 @@ footer address div:nth-child(4)::before {
   margin-top: 13.1rem;
   width: 25rem;
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: opacity 1.5s ease;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl::before {
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: opacity 1.5s ease;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl.apper {
@@ -663,10 +663,10 @@ footer address div:nth-child(4)::before {
 
 .main-list .center-line .provide-list-right .hover-box-right {
   background-color: #fff;
-  align-items: end;
+  align-items: start;
   position: absolute;
   left: 51.88vw;
-  justify-content: end;
+  justify-content: start;
   text-align: left;
   width: 43.2rem;
   box-sizing: border-box;

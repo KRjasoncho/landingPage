@@ -111,34 +111,76 @@ provideLeft.forEach((list) => {
   const provideLists = list.querySelectorAll(".provide-list");
 
   provideLists.forEach((item) => {
-    const provideLeftTitle = item.querySelector(".provide-title");
-    const provideLeftContent = item.querySelector(".provide-content");
+    const provideTitle = item.querySelector(".provide-title");
+    const provideContent = item.querySelector(".provide-content");
 
     item.addEventListener("mouseover", () => {
       item.classList.add("hover-box-left");
 
-      if (provideLeftTitle) {
-        provideLeftTitle.classList.add("hovering-title");
-        provideLeftTitle.classList.add("hover-box-underline");
+      if (provideTitle) {
+        provideTitle.classList.add("hovering-title");
+        provideTitle.classList.add("hover-box-underline");
       }
 
-      if (provideLeftContent) {
-        provideLeftContent.classList.add("hovering-list");
-        provideLeftContent.style.display = "block";
+      if (provideContent) {
+        provideContent.classList.add("hovering-list");
+        provideContent.style.display = "block";
       }
     });
 
     item.addEventListener("mouseleave", () => {
       item.classList.remove("hover-box-left");
 
-      if (provideLeftTitle) {
-        provideLeftTitle.classList.remove("hovering-title");
-        provideLeftTitle.classList.remove("hover-box-underline");
+      if (provideTitle) {
+        provideTitle.classList.remove("hovering-title");
+        provideTitle.classList.remove("hover-box-underline");
       }
 
-      if (provideLeftContent) {
-        provideLeftContent.classList.remove("hovering-list");
-        provideLeftContent.style.display = "none";
+      if (provideContent) {
+        provideContent.classList.remove("hovering-list");
+        provideContent.style.display = "none";
+      }
+    });
+  });
+});
+
+// right
+const provideRight = document.querySelectorAll(
+  ".center-line .provide-list-right"
+);
+
+provideRight.forEach((list) => {
+  const provideLists = list.querySelectorAll(".provide-list");
+
+  provideLists.forEach((item) => {
+    const providetTitle = item.querySelector(".provide-title");
+    const provideContent = item.querySelector(".provide-content");
+
+    item.addEventListener("mouseover", () => {
+      item.classList.add("hover-box-right");
+
+      if (providetTitle) {
+        providetTitle.classList.add("hovering-title");
+        providetTitle.classList.add("hover-box-underline");
+      }
+
+      if (provideContent) {
+        provideContent.classList.add("hovering-list");
+        provideContent.style.display = "block";
+      }
+    });
+
+    item.addEventListener("mouseleave", () => {
+      item.classList.remove("hover-box-right");
+
+      if (providetTitle) {
+        providetTitle.classList.remove("hovering-title");
+        providetTitle.classList.remove("hover-box-underline");
+      }
+
+      if (provideContent) {
+        provideContent.classList.remove("hovering-list");
+        provideContent.style.display = "none";
       }
     });
   });
