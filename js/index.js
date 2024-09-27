@@ -101,91 +101,52 @@ const updateUI = () => {
 };
 
 // page[4] hovering animation
+function handleHover(item, hoverClass, titleClass, contentClass) {
+  const provideTitle = item.querySelector(".provide-title");
+  const provideContent = item.querySelector(".provide-content");
 
-// left
-const provideLeft = document.querySelectorAll(
-  ".center-line .provide-list-left"
-);
+  item.addEventListener("mouseover", () => {
+    item.classList.add(hoverClass);
 
-provideLeft.forEach((list) => {
-  const provideLists = list.querySelectorAll(".provide-list");
+    if (provideTitle) {
+      provideTitle.classList.add("hovering-title", "hover-box-underline");
+    }
 
-  provideLists.forEach((item) => {
-    const provideTitle = item.querySelector(".provide-title");
-    const provideContent = item.querySelector(".provide-content");
+    if (provideContent) {
+      provideContent.classList.add(contentClass);
+      provideContent.style.display = "block";
+    }
+  });
 
-    item.addEventListener("mouseover", () => {
-      item.classList.add("hover-box-left");
+  item.addEventListener("mouseleave", () => {
+    item.classList.remove(hoverClass);
 
-      if (provideTitle) {
-        provideTitle.classList.add("hovering-title");
-        provideTitle.classList.add("hover-box-underline");
-      }
+    if (provideTitle) {
+      provideTitle.classList.remove("hovering-title", "hover-box-underline");
+    }
 
-      if (provideContent) {
-        provideContent.classList.add("hovering-list");
-        provideContent.style.display = "block";
-      }
-    });
+    if (provideContent) {
+      provideContent.classList.remove(contentClass);
+      provideContent.style.display = "none";
+    }
+  });
+}
 
-    item.addEventListener("mouseleave", () => {
-      item.classList.remove("hover-box-left");
-
-      if (provideTitle) {
-        provideTitle.classList.remove("hovering-title");
-        provideTitle.classList.remove("hover-box-underline");
-      }
-
-      if (provideContent) {
-        provideContent.classList.remove("hovering-list");
-        provideContent.style.display = "none";
-      }
-    });
+// 좌측 리스트 처리
+document.querySelectorAll(".center-line .provide-list-left").forEach((list) => {
+  list.querySelectorAll(".provide-list").forEach((item) => {
+    handleHover(item, "hover-box-left", "hovering-title", "hovering-list");
   });
 });
 
-// right
-const provideRight = document.querySelectorAll(
-  ".center-line .provide-list-right"
-);
-
-provideRight.forEach((list) => {
-  const provideLists = list.querySelectorAll(".provide-list");
-
-  provideLists.forEach((item) => {
-    const providetTitle = item.querySelector(".provide-title");
-    const provideContent = item.querySelector(".provide-content");
-
-    item.addEventListener("mouseover", () => {
-      item.classList.add("hover-box-right");
-
-      if (providetTitle) {
-        providetTitle.classList.add("hovering-title");
-        providetTitle.classList.add("hover-box-underline");
-      }
-
-      if (provideContent) {
-        provideContent.classList.add("hovering-list");
-        provideContent.style.display = "block";
-      }
-    });
-
-    item.addEventListener("mouseleave", () => {
-      item.classList.remove("hover-box-right");
-
-      if (providetTitle) {
-        providetTitle.classList.remove("hovering-title");
-        providetTitle.classList.remove("hover-box-underline");
-      }
-
-      if (provideContent) {
-        provideContent.classList.remove("hovering-list");
-        provideContent.style.display = "none";
-      }
-    });
+// 우측 리스트 처리
+document.querySelectorAll(".center-line .provide-list-right").forEach((list) => {
+  list.querySelectorAll(".provide-list").forEach((item) => {
+    handleHover(item, "hover-box-right", "hovering-title", "hovering-list");
   });
 });
 
+// 스크롤이벤트
 const throttleScroll = (e) => {
   if (isScrolling) return; // 이미 스크롤 중이면 무시
 
