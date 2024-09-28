@@ -395,7 +395,14 @@ footer address div:nth-child(4)::before {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
+.main-wrap .main-list:nth-child(3) .wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main-wrap .main-list:nth-child(3) .full {
   background-color: var(--main-color);
   width: 100vw;
@@ -408,12 +415,15 @@ footer address div:nth-child(4)::before {
   justify-content: center;
   align-items: center;
   box-shadow: 0px 6px 10px 4px rgba(0, 0, 0, 0.26);
-  border-radius: 2.5rem;
   opacity: 1;
   position: absolute;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 900;
 }
 
 .shrink {
@@ -436,8 +446,9 @@ footer address div:nth-child(4)::before {
     width: 62.4rem;
     max-height: 10rem;
     font-size: 3rem;
-    top: 46.5%;
-    left: 50%;
+    top: 33%;
+    left: 49.7%;
+    border-radius: 2.5rem;
     transform: translate(-50%, -50%);
     opacity: 1;
   }
@@ -457,53 +468,59 @@ footer address div:nth-child(4)::before {
   align-items: center;
   border-radius: 2.5rem;
   margin-left: 17.2rem;
-  margin-top: 27.1vh;
+  position: absolute;
+  top: 33%;
+  left: 40.75%;
+  transform: translate(-50%, -50%);
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap {
   display: flex;
   gap: 10.6rem;
-  position: relative;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl {
-  margin-top: 13.1rem;
   width: 25rem;
   opacity: 0;
-  transition: opacity 1.5s ease;
+  transition: 1.5s ease;
+  position: absolute;
+  top: 52.64%;
 }
 
-.main-wrap .main-list:nth-child(3) .solution-wrap dl::before {
-  opacity: 0;
-  transition: opacity 1.5s ease;
-}
-
-.main-wrap .main-list:nth-child(3) .solution-wrap dl.apper {
-  opacity: 1;
-}
-.main-wrap .main-list:nth-child(3) .solution-wrap dl.apper::before {
-  opacity: 1;
+.main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(1) {
+  position: absolute;
+  left: 24.79%;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(1)::before {
   content: url(/src/list3/line1.svg);
   position: absolute;
-  top: 0;
+  top: -55%;
   left: 12.5rem;
+}
+
+.main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(2) {
+  position: absolute;
+  left: 43.33%;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(2)::before {
   content: url(/src/list3/line2.svg);
   position: absolute;
-  top: 9.6rem;
-  left: 48.1rem;
+  top: -13%;
+  left: 12.5rem;
+}
+
+.main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(3) {
+  position: absolute;
+  left: 61.88%;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(3)::before {
   content: url(/src/list3/line3.svg);
   position: absolute;
-  top: 9.55rem;
-  left: 48.5rem;
+  top: -14.5%;
+  right: 44%;
 }
 
 /* nth-child(4) */
