@@ -10,6 +10,7 @@ const breadCrumbs = document.querySelectorAll(".bread-crumbs button");
 let page = 0; // 영역 초기값
 const lastPage = mainList.length - 1; // 마지막 페이지
 let isScrolling = false; // 스크롤 잠금 상태
+let flags = false
 
 const updateUI = () => {
   // last page nav/footer 적용
@@ -52,7 +53,7 @@ const updateUI = () => {
   );
 
   const resetAnimation = () => {
-    aniContent.classList.add("full");
+
     aniContent.classList.remove("sub-title");
     aniContent.classList.remove("shrink");
     aniContent.classList.add("ani-content");
@@ -71,87 +72,99 @@ const updateUI = () => {
   };
 
   const startAnimation = () => {
-    if (animationInprogress) return; // 애니메이션이 진행중이면 종료
-    animationInprogress = true;
 
-    setTimeout(() => {
-      aniContent.classList.add("shrink");
+    if(!flags){
+      if (animationInprogress) return; // 애니메이션이 진행중이면 종료
+      animationInprogress = true;
 
       setTimeout(() => {
-        aniContent.classList.remove("full");
-        aniContent.classList.add("sub-title");
-        aniContent.classList.remove("shrink");
+        aniContent.classList.add("shrink");
 
-        let timeouts = []; // 타이머 ID를 저장할 배열
-        let animationInProgress = false; // 애니메이션 진행 상태 체크
+        setTimeout(() => {
+          aniContent.classList.remove("full");
+          aniContent.classList.add("sub-title");
+          aniContent.classList.remove("shrink");
 
-        function clearAllTimeouts() {
-          // 배열에 저장된 모든 타이머를 취소
-          timeouts.forEach((timeoutId) => clearTimeout(timeoutId));
-          timeouts = []; // 타이머 배열 초기화
-        }
+          let timeouts = []; // 타이머 ID를 저장할 배열
+          let animationInProgress = false; // 애니메이션 진행 상태 체크
 
-        function resetSolutionList() {
-          // 모든 요소의 opacity를 0으로 초기화
-          solutionList.forEach((el) => {
-            el.style.opacity = 0; // opacity를 0으로 설정
-          });
-        }
-
-        function startList() {
-          // 페이지가 2가 아닐 경우 애니메이션을 중단하고 모든 타이머 취소
-          if (page !== 2) {
-            clearAllTimeouts(); // 타이머 취소
-            resetSolutionList(); // opacity 초기화
-            animationInProgress = false; // 애니메이션 상태 초기화
-            return; // page !== 2일 때 함수 종료
+          function clearAllTimeouts() {
+            // 배열에 저장된 모든 타이머를 취소
+            timeouts.forEach((timeoutId) => clearTimeout(timeoutId));
+            timeouts = []; // 타이머 배열 초기화
           }
 
-          // 페이지가 2일 경우 애니메이션 실행
-          clearAllTimeouts(); // 이전 타이머를 완전히 초기화하고 새롭게 시작
-          resetSolutionList(); // opacity를 0으로 초기화
-          animationInProgress = true; // 애니메이션 진행 상태 설정
+          function resetSolutionList() {
+            // 모든 요소의 opacity를 0으로 초기화
+            solutionList.forEach((el) => {
+              el.style.opacity = 0; // opacity를 0으로 설정
+            });
+          }
 
-          // 애니메이션 시작
-          solutionList.forEach((el, index) => {
-            const timeoutId = setTimeout(() => {
-              // page가 여전히 2일 경우에만 opacity를 변경
-              if (page === 2) {
-                el.style.opacity = 1; // opacity를 1로 설정
-              }
-            }, index * 1000);
+          function startList() {
+            // 페이지가 2가 아닐 경우 애니메이션을 중단하고 모든 타이머 취소
+            if (page !== 2) {
+              clearAllTimeouts(); // 타이머 취소
+              resetSolutionList(); // opacity 초기화
+              animationInProgress = false; // 애니메이션 상태 초기화
+              return; // page !== 2일 때 함수 종료
+            }
 
-            // 타이머 ID를 배열에 저장
-            timeouts.push(timeoutId);
+            // 페이지가 2일 경우 애니메이션 실행
+            clearAllTimeouts(); // 이전 타이머를 완전히 초기화하고 새롭게 시작
+            resetSolutionList(); // opacity를 0으로 초기화
+            animationInProgress = true; // 애니메이션 진행 상태 설정
+
+            // 애니메이션 시작
+            solutionList.forEach((el, index) => {
+              const timeoutId = setTimeout(() => {
+                // page가 여전히 2일 경우에만 opacity를 변경
+                if (page === 2) {
+                  el.style.opacity = 1; // opacity를 1로 설정
+                }
+              }, index * 1000);
+
+              // 타이머 ID를 배열에 저장
+              timeouts.push(timeoutId);
+            });
+          }
+
+          // 페이지 상태가 바뀔 때마다 이 함수를 호출해야 함
+          startList();
+
+          // 페이지가 바뀔 때마다 startList()를 호출해 줘야 함
+          window.addEventListener("popstate", () => {
+            clearAllTimeouts(); // 이전 타이머를 취소
+            resetSolutionList(); // opacity 초기화
+            startList(); // 새 애니메이션 시작
           });
-        }
 
-        // 페이지 상태가 바뀔 때마다 이 함수를 호출해야 함
-        startList();
+          // 페이지를 이동할 때마다 이 코드를 호출하여 페이지 상태를 업데이트
+          function navigateToPage(newPage) {
+            page = newPage; // 새로운 페이지 상태로 업데이트
+            clearAllTimeouts(); // 현재 애니메이션 취소
+            resetSolutionList(); // opacity를 0으로 초기화
+            startList(); // 새 애니메이션 시작
+          }
+          flags = true
+          console.log(flags)
+        }, 1000); // 첫 번째 타임아웃
+      }, 1500); // 두 번째 타임아웃
 
-        // 페이지가 바뀔 때마다 startList()를 호출해 줘야 함
-        window.addEventListener("popstate", () => {
-          clearAllTimeouts(); // 이전 타이머를 취소
-          resetSolutionList(); // opacity 초기화
-          startList(); // 새 애니메이션 시작
-        });
+      setTimeout(() => {
+        navImg.forEach((img) => img.classList.remove("filter-white"));
+        navBtn.classList.remove("white-btn");
+        navTitle.classList.remove("filter-white");
+        breadCrumbs[2].classList.remove("focusTap2");
+      }, 1500); // UI 변경
+    }else if(flags){
+      aniContent.classList.remove("full");
+      aniContent.classList.add("sub-title");
+      solutionList.forEach((el) => {
+        el.style.opacity = 1; // opacity를 0으로 설정
+      });
+    }
 
-        // 페이지를 이동할 때마다 이 코드를 호출하여 페이지 상태를 업데이트
-        function navigateToPage(newPage) {
-          page = newPage; // 새로운 페이지 상태로 업데이트
-          clearAllTimeouts(); // 현재 애니메이션 취소
-          resetSolutionList(); // opacity를 0으로 초기화
-          startList(); // 새 애니메이션 시작
-        }
-      }, 1000); // 첫 번째 타임아웃
-    }, 1500); // 두 번째 타임아웃
-
-    setTimeout(() => {
-      navImg.forEach((img) => img.classList.remove("filter-white"));
-      navBtn.classList.remove("white-btn");
-      navTitle.classList.remove("filter-white");
-      breadCrumbs[2].classList.remove("focusTap2");
-    }, 1500); // UI 변경
   };
 
   // 페이지가 2일 때 애니메이션 시작
