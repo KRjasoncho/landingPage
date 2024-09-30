@@ -10,7 +10,7 @@ const breadCrumbs = document.querySelectorAll(".bread-crumbs button");
 let page = 0; // 영역 초기값
 const lastPage = mainList.length - 1; // 마지막 페이지
 let isScrolling = false; // 스크롤 잠금 상태
-let flags = false
+let flags = false;
 
 const updateUI = () => {
   // last page nav/footer 적용
@@ -53,7 +53,6 @@ const updateUI = () => {
   );
 
   const resetAnimation = () => {
-
     aniContent.classList.remove("sub-title");
     aniContent.classList.remove("shrink");
     aniContent.classList.add("ani-content");
@@ -72,8 +71,7 @@ const updateUI = () => {
   };
 
   const startAnimation = () => {
-
-    if(!flags){
+    if (!flags) {
       if (animationInprogress) return; // 애니메이션이 진행중이면 종료
       animationInprogress = true;
 
@@ -132,22 +130,8 @@ const updateUI = () => {
           // 페이지 상태가 바뀔 때마다 이 함수를 호출해야 함
           startList();
 
-          // 페이지가 바뀔 때마다 startList()를 호출해 줘야 함
-          window.addEventListener("popstate", () => {
-            clearAllTimeouts(); // 이전 타이머를 취소
-            resetSolutionList(); // opacity 초기화
-            startList(); // 새 애니메이션 시작
-          });
-
-          // 페이지를 이동할 때마다 이 코드를 호출하여 페이지 상태를 업데이트
-          function navigateToPage(newPage) {
-            page = newPage; // 새로운 페이지 상태로 업데이트
-            clearAllTimeouts(); // 현재 애니메이션 취소
-            resetSolutionList(); // opacity를 0으로 초기화
-            startList(); // 새 애니메이션 시작
-          }
-          flags = true
-          console.log(flags)
+          flags = true;
+          console.log(flags);
         }, 1000); // 첫 번째 타임아웃
       }, 1500); // 두 번째 타임아웃
 
@@ -157,14 +141,14 @@ const updateUI = () => {
         navTitle.classList.remove("filter-white");
         breadCrumbs[2].classList.remove("focusTap2");
       }, 1500); // UI 변경
-    }else if(flags){
+    } else if (flags) {
       aniContent.classList.remove("full");
       aniContent.classList.add("sub-title");
       solutionList.forEach((el) => {
         el.style.opacity = 1; // opacity를 0으로 설정
+        breadCrumbs[2].classList.remove("focusTap2");
       });
     }
-
   };
 
   // 페이지가 2일 때 애니메이션 시작

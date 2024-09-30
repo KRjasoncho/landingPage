@@ -29,6 +29,26 @@ body {
   --gray-color: #707070;
   --dark-color: #b7a9fc;
   --light-color: #d9d4fc;
+
+  --bold-font-weight: 700;
+  --middle-font-weight: 500;
+  --small-font-weight: 400;
+
+  --title-fontsize: 7.2rem;
+  --content-fontsize: 2.6rem;
+  --listTitle-fontsize: 3rem;
+  --listContent-font-size: 2rem;
+  --btn-fontsize: 1.7rem;
+  --small-fontsize: 1.4rem;
+  --provide-fontsize: 2.4rem;
+
+  --title-lineheight: 9rem;
+  --content-lineheight: 3.85rem;
+  --listTitle-lineheight: 4.4rem;
+  --listContent-lineheight: 2.96rem;
+  --btn-lineheight: 2.516rem;
+  --small-lineheight: 2.07rem;
+  --provide-lineheight: 3.55rem;
 }
 
 /* header */
@@ -56,7 +76,7 @@ header .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 48.6vw;
+  width: calc(100vw - 51.4%);
 }
 
 header .nav .h1 {
@@ -66,13 +86,6 @@ header .nav .h1 {
 header .nav .nav-btns {
   display: flex;
   align-items: center;
-}
-
-@media (max-width: 1200px) {
-  header .nav .nav-btns .nav-item [class^="btn"] {
-    display: none;
-    text-wrap: nowrap;
-  }
 }
 
 header .nav .nav-btns:nth-child(-n + 4) {
@@ -112,9 +125,9 @@ header .nav .nav-btns .nav-item .btn-youtube::before {
 .purple-btn {
   border-radius: 3.7rem;
   background-color: var(--main-color);
-  font-size: 1.7rem;
-  font-weight: 700;
-  line-height: 2.516rem;
+  font-size: var(--button-fontsize);
+  font-weight: var(--bold-font-weight);
+  line-height: var(--btn-lineheight);
   text-wrap: nowrap;
   color: #fff;
   padding: 1.2rem 1.9rem 1.3rem 1.9rem;
@@ -136,7 +149,8 @@ header .nav.lastNav {
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
-  width: 48.6vw;
+  width: calc(100vw - 51.4%);
+  height: 80%;
   gap: 60rem;
 }
 
@@ -146,8 +160,10 @@ footer {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-left: 5rem;
   z-index: 1000;
+  height: 100vh;
+  box-sizing: border-box;
+  transform: translateY(0%);
 }
 
 footer.none {
@@ -155,7 +171,9 @@ footer.none {
 }
 
 footer address {
-  width: 48.6vw;
+  position: absolute;
+  width: calc(100vw - 51.4%);
+  top: 0;
   padding-top: 2rem;
   font-size: 1.6rem;
   line-height: 2.3rem;
@@ -187,16 +205,16 @@ footer address div:nth-child(4)::before {
 }
 
 .main-wrap .main-list .title {
-  font-size: 7.2rem;
-  line-height: 9rem;
-  font-weight: 700;
+  font-size: var(--title-fontsize);
+  line-height: var(--title-lineheight);
+  font-weight: var(--bold-font-weight);
   color: var(--text-color);
 }
 
 .main-wrap .main-list .content {
-  font-size: 2.6rem;
-  line-height: 3.85rem;
-  font-weight: 500;
+  font-size: var(--content-fontsize);
+  line-height: var(--content-lineheight);
+  font-weight: var(--middle-font-weight);
   padding-top: 2rem;
 }
 
@@ -242,9 +260,9 @@ footer address div:nth-child(4)::before {
   width: 8.4rem;
   background-color: var(--main-color);
   color: #fff;
-  font-size: 1.4rem;
-  line-height: 2.07rem;
-  font-weight: 700;
+  font-size: var(--small-fontsize);
+  line-height: var(--small-lineheight);
+  font-weight: var(--bold-font-weight);
   padding: 0.6rem 0;
   display: flex;
   justify-content: center;
@@ -259,9 +277,9 @@ footer address div:nth-child(4)::before {
 
 .solution-box .solution-title {
   color: var(--main-color);
-  font-size: 2.6rem;
-  line-height: 3.85rem;
-  font-weight: 700;
+  font-size: var(--content-fontsize);
+  line-height: var(--content-lineheight);
+  font-weight: var(--bold-font-weight);
 }
 
 .underline::after {
@@ -278,9 +296,9 @@ footer address div:nth-child(4)::before {
 
 .solution-box .solution-list {
   color: var(--gray-color);
-  font-size: 2rem;
-  line-height: 2.96rem;
-  font-weight: 400;
+  font-size: var(--listContent-font-size);
+  line-height: var(--listContent-lineheight);
+  font-weight: var(--small-font-weight);
 }
 
 /* nth-child(1) */
@@ -296,6 +314,7 @@ footer address div:nth-child(4)::before {
 }
 
 .main-wrap .main-list:nth-child(1) .wrap {
+  position: relative;
   padding: 19.3rem 12.7vw 0 25.8vw;
 }
 
@@ -310,6 +329,18 @@ footer address div:nth-child(4)::before {
   background-image: url(/src/list1/list1-img.png);
   width: 260px;
   height: 245px;
+}
+
+@media (max-width: 970px) {
+  .main-wrap .main-list:nth-child(1) .img-wrap [class^="img"] {
+    display: none;
+  }
+}
+
+@media (max-height: 770px) {
+  .main-wrap .main-list:nth-child(1) .img-wrap [class^="img"] {
+    display: none;
+  }
 }
 
 .main-wrap .main-list:nth-child(1) .img-wrap .img1 {
@@ -360,13 +391,25 @@ footer address div:nth-child(4)::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 4.44rem;
+  font-size: var(--listTitle-fontsize);
+  font-weight: var(--bold-font-weight);
+  line-height: var(--listTitle-lineheight);
   background-color: rgba(213, 208, 255, 0.7);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 3.6rem 0 3.6rem 0;
   border-radius: 4.5rem 4.5rem 0 4.5rem;
+}
+
+@media (max-width: 700px) {
+  .main-wrap .bubble-wrap div {
+    display: none;
+  }
+}
+
+@media (max-height: 870px) {
+  .main-wrap .bubble-wrap div {
+    display: none;
+  }
 }
 
 .main-wrap .bubble-wrap div:nth-child(1) {
@@ -374,7 +417,7 @@ footer address div:nth-child(4)::before {
   padding-left: 6.9rem;
   position: absolute;
   top: 64.2vh;
-  left: 44.7vw;
+  right: 42vw;
 }
 
 .main-wrap .bubble-wrap div:nth-child(2) {
@@ -418,7 +461,7 @@ footer address div:nth-child(4)::before {
   color: #fff;
   font-size: 6.4rem;
   line-height: 9.47rem;
-  font-weight: 700;
+  font-weight: var(--bold-font-weight);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -453,9 +496,9 @@ footer address div:nth-child(4)::before {
   to {
     width: 62.4rem;
     max-height: 10rem;
-    font-size: 3rem;
-    top: 33%;
-    left: 49.7%;
+    font-size: var(--listTitle-fontsize);
+    top: 35%;
+    left: 50%;
     border-radius: 2.5rem;
     transform: translate(-50%, -50%);
     opacity: 1;
@@ -463,9 +506,9 @@ footer address div:nth-child(4)::before {
 }
 
 .main-wrap .main-list:nth-child(3) .sub-title {
-  font-size: 3rem;
-  line-height: 4.44rem;
-  font-weight: 700;
+  font-size: var(--listTitle-fontsize);
+  line-height: var(--listTitle-lineheight);
+  font-weight: var(--bold-font-weight);
   color: #fff;
   background-color: var(--main-color);
   box-shadow: 0px 6px 10px 4px rgba(0, 0, 0, 0.26);
@@ -475,11 +518,11 @@ footer address div:nth-child(4)::before {
   justify-content: center;
   align-items: center;
   border-radius: 2.5rem;
-  margin-left: 17.2rem;
   position: absolute;
-  top: 33%;
-  left: 40.75%;
+  top: 35%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 500;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap {
@@ -495,6 +538,12 @@ footer address div:nth-child(4)::before {
   top: 52.64%;
 }
 
+@media (min-width: 1921px) {
+  dl:before {
+    display: none;
+  }
+}
+
 .main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(1) {
   position: absolute;
   left: 24.79%;
@@ -505,6 +554,7 @@ footer address div:nth-child(4)::before {
   position: absolute;
   top: -55%;
   left: 12.5rem;
+  width: 100vw;
 }
 
 .main-wrap .main-list:nth-child(3) .solution-wrap dl:nth-child(2) {
@@ -565,9 +615,9 @@ footer address div:nth-child(4)::before {
   background-color: rgba(255, 255, 255, 0.26);
   width: 19.7rem;
   color: var(--text-color);
-  font-size: 2.4rem;
-  line-height: 3.55rem;
-  font-weight: 700;
+  font-size: var(--provide-fontsize);
+  line-height: var(--provide-lineheight);
+  font-weight: var(--bold-font-weight);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -742,9 +792,9 @@ footer address div:nth-child(4)::before {
 
 .main-list .hovering-title {
   color: var(--main-color);
-  font-size: 3rem;
-  line-height: 4.4rem;
-  font-weight: 700;
+  font-size: var(--listTitle-fontsize);
+  line-height: var(--listTitle-lineheight);
+  font-weight: var(--bold-font-weight);
 }
 
 .main-list .hover-box-underline::after {
@@ -756,9 +806,9 @@ footer address div:nth-child(4)::before {
 }
 
 .main-list .hovering-list {
-  font-size: 2.4rem;
-  line-height: 3.55rem;
-  font-weight: 500;
+  font-size: var(--provide-fontsize);
+  line-height: var(--provide-lineheight);
+  font-weight: var(--middle-font-weight);
   margin-top: 1.1rem;
 }
 
@@ -767,14 +817,15 @@ footer address div:nth-child(4)::before {
   background-image: url(/src/list5/list5-background.png);
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: calc(100vh - 15rem);
   overflow: hidden;
   z-index: 0;
+  box-sizing: border-box;
 }
 
 .main-wrap .main-list:nth-child(5) .wrap {
-  padding: 19.3rem 12.7vw 0 25.8vw;
+  padding: 19.3rem 12.7vw 15rem 25.8vw;
 }
 
 .main-wrap .main-list:nth-child(5) .title {
