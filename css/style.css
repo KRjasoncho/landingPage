@@ -490,12 +490,11 @@ footer address div:nth-child(4)::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 1;
   }
 
   to {
     width: 62.4rem;
-    max-height: 10rem;
+    max-height: 12rem;
     font-size: var(--listTitle-fontsize);
     top: 35%;
     left: 50%;
