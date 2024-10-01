@@ -1,5 +1,6 @@
 const wrap = document.querySelector(".main-wrap"); // 보여지는 영역
 const mainList = document.querySelectorAll(".main-list");
+const header = document.querySelector("header");
 const nav = document.querySelector("nav");
 const navTitle = document.querySelector("h1");
 const navImg = document.querySelectorAll(".nav-item a");
@@ -15,7 +16,8 @@ let flags = false;
 const updateUI = () => {
   // last page nav/footer 적용
   if (page === lastPage) {
-    nav.classList.add("lastNav");
+    header.classList.add("last-header");
+    nav.classList.add("last-nav");
     footer.classList.remove("none");
     navBtn.style.display = "none";
   } else {
@@ -87,7 +89,7 @@ const updateUI = () => {
           navBtn.classList.remove("white-btn");
           navTitle.classList.remove("filter-white");
           breadCrumbs[2].classList.remove("focusTap2");
-        }, 1800);
+        }, 1700);
       }
       animationInprogress = false;
       flags = true;

@@ -88,6 +88,12 @@ header .nav .nav-btns {
   align-items: center;
 }
 
+@media (max-width: 700px) {
+  header .nav .nav-btns .nav-item [class^="btn"] {
+    display: none;
+  }
+}
+
 header .nav .nav-btns:nth-child(-n + 4) {
   gap: 2rem;
 }
@@ -144,14 +150,18 @@ header .nav .purple-btn.white-btn {
 }
 
 /* lastnav */
-header .nav.lastNav {
+header.last-header {
+  position: relative;
+  height: calc(100vh - 30rem);
+}
+
+header nav.last-nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
   width: calc(100vw - 51.4%);
-  height: 80%;
-  gap: 60rem;
+  height: 100%;
 }
 
 /* footer */
@@ -159,11 +169,13 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  width: 100%;
+  height: auto;
+  position: absolute;
   z-index: 1000;
-  height: 100vh;
+  bottom: 0;
   box-sizing: border-box;
-  transform: translateY(0%);
+  transform: translateY(100%);
 }
 
 footer.none {
@@ -173,7 +185,7 @@ footer.none {
 footer address {
   position: absolute;
   width: calc(100vw - 51.4%);
-  top: 0;
+  top: 1rem;
   padding-top: 2rem;
   font-size: 1.6rem;
   line-height: 2.3rem;
