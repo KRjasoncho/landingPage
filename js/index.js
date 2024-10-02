@@ -21,7 +21,8 @@ const updateUI = () => {
     footer.classList.remove("none");
     navBtn.style.display = "none";
   } else {
-    nav.classList.remove("lastNav");
+    header.classList.remove("last-header");
+    nav.classList.remove("last-nav");
     footer.classList.add("none");
     navBtn.style.display = "block";
   }
